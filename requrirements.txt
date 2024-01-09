@@ -1,0 +1,6 @@
+django
+djangorestframework
+pillow
+django-ckeditor
+django-filebrowser
+django-tinymce
