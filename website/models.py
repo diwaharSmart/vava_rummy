@@ -86,3 +86,5 @@ class JsonSerializer(models.Model):
 
 class File(models.Model):
     data = models.FileField(upload_to="website/files/",blank=True,null=True)
+    def __str__(self):
+        return self.data.url
