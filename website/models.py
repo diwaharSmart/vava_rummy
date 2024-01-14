@@ -26,9 +26,10 @@ class Page(models.Model):
     website = models.ForeignKey('Website', on_delete=models.CASCADE, blank=True, null=True)
     key = models.CharField(max_length=255, unique=True, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
-    header = models.TextField(blank=True, null=True)
+    head = models.TextField(blank=True, null=True)
+    header = models.ForeignKey('Widget',blank=True,null=True,on_delete=models.CASCADE,related_name="header_widget")
     body = models.TextField(blank=True, null=True)
-    footer = models.TextField(blank=True, null=True)
+    footer = models.ForeignKey('Widget',blank=True,null=True,on_delete=models.CASCADE,related_name="footer_widget")
     meta_title = models.CharField(max_length=255, blank=True, null=True)
     meta_description = models.TextField(blank=True, null=True)
     meta_keywords = models.TextField(blank=True, null=True)
@@ -48,6 +49,9 @@ class Widget(models.Model):
     title = models.CharField(max_length=255,blank=True,null=True)
     content = models.TextField(max_length=2500,blank=True,null=True)
     is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.key
 
 class CascadeStyle(models.Model):
     page = models.ForeignKey('Page', on_delete=models.CASCADE, blank=True, null=True)

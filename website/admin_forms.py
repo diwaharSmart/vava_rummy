@@ -49,6 +49,21 @@ class PageForm(forms.ModelForm):
             ),
         }
 
+class WidgetForm(forms.ModelForm):
+    class Meta:
+        model = Widget
+        fields = '__all__'
+        widgets = {
+            'content': AceWidget(
+                mode='html',
+                theme='github',  # Choose a theme
+                width='100%',
+                height="500px",
+                wordwrap=True,
+                showinvisibles=False,
+            ),
+        }
+
 class CssForm(forms.ModelForm):
     class Meta:
         model = Api

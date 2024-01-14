@@ -26,13 +26,16 @@
     {% if page.website.fav_icon %}
     <link href="{{ page.website.fav_icon.url }}" rel="icon">
     {% endif %}
-    {% if page.header %}
-        {{ page.header|safe }}
+    {% if page.head %}
+        {{ page.head|safe }}
     {% endif %}
     
     <!-- Include additional meta tags or links as needed -->
 </head>
 <body>
+    {% if page.header %}
+        {{ page.header.content|safe }}
+    {% endif %}
 
     {% if page.body %}
         {{ page.body|safe }}
@@ -41,7 +44,7 @@
     {% endif %}
 
     {% if page.footer %}
-        {{ page.footer|safe }}
+        {{ page.footer.content|safe }}
     {% endif %}
     {% if page.website.base_footer %}
         {{ page.website.base_footer|safe }}

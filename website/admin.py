@@ -10,9 +10,14 @@ class PageAdmin(admin.ModelAdmin):
     class Meta:
         model = Page
 
+class WidgetAdmin(admin.ModelAdmin):
+    form = WidgetForm
+    # inlines = [CascadeStyleInline,JavaScriptInline]
+    class Meta:
+        model = Widget
 
 admin.site.register(Page,PageAdmin)
-admin.site.register(Widget)
+admin.site.register(Widget,WidgetAdmin)
 admin.site.register(JsonSerializer)
 admin.site.register(Website)
 admin.site.register(File)
